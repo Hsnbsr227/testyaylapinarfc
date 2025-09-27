@@ -180,6 +180,14 @@ header .title-p:hover {
   display: block;
 }
 
+.dropdown-menu {
+  display: none;
+}
+
+.dropdown.open .dropdown-menu {
+  display: block;
+}
+
 .arrow {
     display: inline-block;
     margin-left: 5px;
@@ -230,6 +238,20 @@ header .title-p:hover {
   overflow: hidden;
   border-radius: 12px;
   margin-bottom: 40px;
+  text-align: center;
+}
+
+.banner-pc {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Mobil Banner */
+.banner-mobile {
+  display: none;
+  width: 100%;
+  height: auto;
 }
 
 .kadro-kapak img {
@@ -341,6 +363,12 @@ header .title-p:hover {
   width: 220px;
   text-align: center;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.lider-kart:hover {
+ box-shadow: 0 5px 15px rgba(0,0,0,0.25);
 }
 
 .lider-kart img {
@@ -484,4 +512,16 @@ footer {
   .dropdown-menu {
     position: static;
   }
+
+
+  /*?Banner Kadro resim css kodu Başladı ?*/
+
+  .banner-pc {
+    display: none;
+  }
+  .banner-mobile {
+    display: block;
+  }
+
+  /*!Banner Kadro resim css kodu bitti ?*/
 }

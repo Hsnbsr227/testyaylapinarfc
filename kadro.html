@@ -63,7 +63,7 @@
   <ul class="nav-menu">
     <li><a href="index.html">Ana Sayfa</a></li>
      <li class="dropdown">
-        <a href="kadro.html">Kadromuz <span class="arrow">&#9654;</span></a>
+        <a href="kadro.html"  class="dropdown-toggle">Kadromuz <span class="arrow">&#9654;</span></a>
           <ul class="dropdown-menu">
             <li><a href="kadro.html">Oyuncular</a></li>
             <li><a href="#">Yıldızlar</a></li>
@@ -85,7 +85,11 @@
 <section id="kadro">
   <!-- Kapak Fotoğrafı + Başlık -->
   <div class="kadro-kapak">
-    <img src="Resimler/Oyuncularımız.png" alt="Kadro Kapak Fotoğrafı" />
+    <!-- PC banner -->
+    <img src="Resimler/Oyuncularımız.png" alt="Oyuncularımız" class="banner-pc">
+    <!-- Mobil banner -->
+    <img src="Resimler/Oyuncularımız-Mobil.png" alt="Oyuncularımız" class="banner-mobile">
+
     <div class="kapak-yazi">
       <h2>Kadromuz</h2>
       <p>Takımımızın güçlü oyuncuları</p>
@@ -266,6 +270,20 @@
     <p>© 2025 Yaylapınar FC. Tüm hakları saklıdır.</p>
   </div>
 </footer>
+
+
+<script>
+  document.querySelectorAll('.dropdown > a').forEach(link => {
+    link.addEventListener('click', function(e) {
+      if (window.innerWidth <= 768) { 
+        // Mobilde çalışsın
+        e.preventDefault(); // kadro.html açılmasını engeller
+        this.parentElement.classList.toggle('open'); // menüyü aç/kapat
+      } 
+      // PC’de hiçbir şey engellenmez → kadro.html açılır
+    });
+  });
+</script>
 
 
 <script>

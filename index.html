@@ -66,7 +66,7 @@
         <a href="#" class="kadro-link">Kadromuz <span class="arrow">&#9654;</span></a>
           <ul class="dropdown-menu">
             <li><a href="kadro.html">Oyuncular</a></li>
-            <li><a href="#">Yıldızlar</a></li>
+            <li><a href="yildizlar.html">Yıldızlar</a></li>
          </ul>
     </li>
     <li><a href="fikstür.html">Fikstür & Sonuçlar</a></li>
@@ -143,6 +143,246 @@
 
   
 </div>
+  <section class="news-container">
+    <div class="news-main" id="newsSlider">
+        
+        <div class="news-item active">
+            <img src="Resimler/Anasayfa Sliders Photo.png" alt="Haber 1">
+            <div class="news-text">
+                <span class="news-tag">GÜNCEL</span>
+                <h3>Yaylapınar FC Sezonu Açtı!</h3>
+            </div>
+        </div>
+
+        <div class="news-item">
+            <img src="Resimler/Örnek Görsel Anasayfa Sliders.png" alt="Haber 2">
+            <div class="news-text">
+                <span class="news-tag">ANTRENMAN</span>
+                <h3>Yayla Arena'da Hazırlıklar Sürüyor</h3>
+            </div>
+        </div>
+
+        <div class="news-item">
+            <img src="Resimler/Anasayfa Sliders Mac Sonucu.png" alt="Haber 3">
+            <div class="news-text">
+                <span class="news-tag">MAÇ SONUCU</span>
+                <h3>Kritik Galibiyetle 3 Puan Bizim</h3>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="news-numbers">
+        <span class="n-btn active" onclick="showNews(0)">1</span>
+        <span class="n-btn" onclick="showNews(1)">2</span>
+        <span class="n-btn" onclick="showNews(2)">3</span>
+    </div>
+</section>
+
+<!-- News-İtem slider java kodları-->
+<script>
+
+  function showNews(index) {
+    const items = document.querySelectorAll('.news-item');
+    const btns = document.querySelectorAll('.n-btn');
+
+    items.forEach(item => item.classList.remove('active'));
+    btns.forEach(btn => btn.classList.remove('active'));
+
+    items[index].classList.add('active');
+    btns[index].classList.add('active');
+}
+
+let currentNewsIndex = 0; // Kaçıncı haberde olduğumuzu tutar
+const totalNews = 3; // Toplam haber sayın (Eğer haber sayın artarsa burayı güncellersin)
+
+// Otomatik geçiş fonksiyonu
+function autoShowNews() {
+    currentNewsIndex++; // Bir sonraki habere geç
+    
+    if (currentNewsIndex >= totalNews) {
+        currentNewsIndex = 0; // Son habere geldiyse başa dön
+    }
+    
+    showNews(currentNewsIndex); // Haberi değiştir
+}
+
+// Her 5 saniyede bir (5000 milisaniye) autoShowNews fonksiyonunu çalıştır
+let newsInterval = setInterval(autoShowNews, 5000);
+
+// Kullanıcı bir numaraya kendisi tıklarsa, otomatik geçişi sıfırlayalım ki karışmasın
+function showNews(index) {
+    currentNewsIndex = index; // Manuel tıklanan indexi kaydet
+    
+    const items = document.querySelectorAll('.news-item');
+    const btns = document.querySelectorAll('.n-btn');
+
+    items.forEach(item => item.classList.remove('active'));
+    btns.forEach(btn => btn.classList.remove('active'));
+
+    items[index].classList.add('active');
+    btns[index].classList.add('active');
+
+    // Kullanıcı tıkladığı için zamanlayıcıyı sıfırlayıp baştan başlatıyoruz
+    clearInterval(newsInterval);
+    newsInterval = setInterval(autoShowNews, 5000);
+}
+</script>
+
+<!-- News-İtem slider java kodları-->
+
+
+<!--Ayın Oyuncusu-->
+
+
+<section class="potm-section">
+    <div class="potm-split-container">
+        
+        <div class="potm-left">
+            <div class="potm-card-massive">
+                <div class="rating-loader-huge">
+                    <svg viewBox="0 0 100 100">
+                        <circle class="rating-bg" cx="50" cy="50" r="45"></circle>
+                        <circle class="rating-bar animate-pulse" cx="50" cy="50" r="45"></circle>
+                    </svg>
+    <div class="rating-content">
+        <span id="potm-rating">9.5</span>
+        <small>REYTING</small>
+    </div>
+</div>
+                
+                <h2 id="potm-name">Hasan Basri</h2>
+                
+                <div class="massive-stats">
+                    <div class="m-box">
+                        <span id="potm-goal">14</span>
+                        <small>GOL</small>
+                    </div>
+                    <div class="m-box">
+                        <span id="potm-assist">12</span>
+                        <small>ASİST</small>
+                    </div>
+                    <div class="m-box">
+                        <span id="potm-match">5</span>
+                        <small>MAÇ</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Ayın Oyuncusu-->
+
+        <!--Sıralama Tablosu-->
+        <div class="potm-right">
+    <div class="league-table-container">
+        <h3 class="table-title">PUAN DURUMU</h3>
+        <table class="league-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>TAKIM</th>
+                    <th>O</th>
+                    <th>G</th>
+                    <th>M</th>
+                    <th>P</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="rank-1">
+                    <td>1</td>
+                    <td class="team-name">YAYLAPINAR FC</td>
+                    <td>5</td>
+                    <td>4</td>
+                    <td>1</td>
+                    <td class="points">12</td>
+                </tr>
+                <tr class="rank-2">
+                    <td>2</td>
+                    <td class="team-name">B TAKIMI</td>
+                    <td>5</td>
+                    <td>1</td>
+                    <td>4</td>
+                    <td class="points">3</td>
+                </tr>
+            </tbody>
+        </table>
+
+        
+    </div>
+
+    <div class="action-area">
+        <a href="#puan-detay" class="btn-main-action">
+            PUAN TABLOSUNU GÖR
+            <span class="arrow">→</span>
+        </a>
+    </div>
+    
+</div>
+
+    </div>
+</section>
+
+
+
+
+
+  <!-- İletişim Section -->
+
+<section class="contact-section">
+    <h2 class="section-title">Maç Teklifi & İletişim</h2>
+    
+    <div class="contact-wrapper">
+        <div class="contact-form-container">
+            <form action="https://formspree.io/f/mvzpqzrz" method="POST">
+                <div class="form-row">
+                    <div class="input-group">
+                        <label>İsim</label>
+                        <input type="text" name="isim" placeholder="Adınız" required>
+                    </div>
+                    <div class="input-group">
+                        <label>E-posta</label>
+                        <input type="email" name="email" placeholder="ornek@gmail.com" required>
+                    </div>
+                </div>
+                
+                <div class="input-group">
+                    <label>Takım Adı</label>
+                    <input type="text" name="takim_adi" placeholder="Takım Adınız Nedir?">
+                </div>
+                
+                <div class="input-group">
+                    <label>Mesaj</label>
+                    <textarea name="mesaj" rows="5" placeholder="Maç Teklifi detaylarını ve Takım bilgilerinizi iletiniz."></textarea>
+                </div>
+                
+                <div style="display: flex; justify-content: flex-end;">
+                    <button type="submit" class="submit-btn">
+                        <i class="far fa-paper-plane"></i> Mesajı gönder
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <div class="contact-info">
+            <div class="info-card">
+                <p>Daha direkt bir kanal mı tercih ediyorsunuz? E-posta üzerinden ulaşabilirsiniz.</p>
+                <div class="email-badge">
+                    <i class="far fa-envelope"></i>
+                    <span>yaylapinarfc@gmail.com</span>
+                </div>
+            </div>
+
+            <div class="social-grid">
+                <h3>SOSYAL</h3>
+                <div class="social-cards">
+                    <a href="https://www.instagram.com/yaylapinarfc/" class="social-box"><i class="fab fa-instagram"></i><span>Instagram</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
 
   </div>
 
@@ -174,16 +414,6 @@
     <p>© 2025 Yaylapınar FC. Tüm hakları saklıdır.</p>
   </div>
 </footer>
-
-
-
-
-
-
-
-</div>
-
-
 
 
 
@@ -282,6 +512,42 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.addEventListener("resize", checkDevice);
   window.addEventListener("load", checkDevice);
+</script>
+
+
+<script>
+    async function ayinOyuncusunuGetir() {
+        // Senin tablo kimliğin
+        const sheetId = '15fflGMiBZDP72EHdesARpHYBp-HfQrfEKLZq2fBeUC4';
+        const base = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json`;
+
+        try {
+            const response = await fetch(base);
+            const text = await response.text();
+            // Google'ın gönderdiği karmaşık JSON'ı temizliyoruz
+            const data = JSON.parse(text.substr(47).slice(0, -2));
+            
+            // Tablonun 2. satırındaki verileri alıyoruz (row[0] başlıklar olduğu için)
+            const row = data.table.rows[0].c;
+
+            // HTML'deki yerlerine yerleştiriyoruz
+            document.getElementById('potm-name').innerText = row[0].v;    // İsim
+            document.getElementById('potm-rating').innerText = row[1].v;  // Reyting
+            document.getElementById('potm-goal').innerText = row[2].v;    // Gol
+            document.getElementById('potm-assist').innerText = row[3].v;  // Asist
+            document.getElementById('potm-match').innerText = row[4].v;   // Maç
+            
+            // Eğer resim linki varsa resmi güncelle
+            if(row[5] && row[5].v) {
+                document.getElementById('potm-img').src = row[5].v;
+            }
+        } catch (error) {
+            console.log("Veri çekilirken hata oluştu:", error);
+        }
+    }
+
+    // Sayfa yüklendiğinde çalıştır
+    window.onload = ayinOyuncusunuGetir;
 </script>
 </body>
 </html>

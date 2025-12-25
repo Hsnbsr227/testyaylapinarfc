@@ -6,6 +6,17 @@ body {
   color: #000;
 }
 
+/* Sayfa aşağı indikçe öğelerin belirmesi için */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
 /*? Header Css Kodları Başladı */
 header {
   display: flex;
@@ -546,6 +557,244 @@ footer {
 
 
 
+.news-container {
+    max-width: 850px; /* Genişliği 1000px'den 850px'e çektik */
+    margin: 30px auto; /* Üst ve alt boşluğu biraz daralttık */
+    padding: 0 15px;
+}
+
+.news-main {
+    position: relative;
+    border-radius: 12px 12px 0 0;
+    overflow: hidden;
+    background: #000;
+}
+
+.news-item {
+    display: none;
+    position: relative;
+    height: 400px; /* Yüksekliği 550px'den 400px'e indirdik (Daha kibar durur) */
+    width: 100%;
+    overflow: hidden;
+    border-radius: 12px 12px 0 0;
+}
+
+.news-item.active {
+    display: block;
+}
+
+.news-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Resmin oranını bozmadan kutuya hapseder */
+    object-position: center;
+}
+
+.news-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 30px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.9));
+}
+
+.news-text h3 {
+    color: #fff;
+    font-size: 22px; /* Başlık boyutunu da slider ile uyumlu olması için biraz küçülttük */
+    margin-top: 8px;
+}
+
+.news-tag {
+    background: #00cc44;
+    color: #fff;
+    padding: 3px 10px;
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.news-text h3 {
+    color: #fff;
+    font-size: 26px;
+    margin-top: 10px;
+}
+
+.news-numbers {
+    display: flex;
+    background: #222;
+    border-radius: 0 0 12px 12px;
+}
+
+.n-btn {
+    flex: 1;
+    text-align: center;
+    padding: 15px;
+    color: #888;
+    cursor: pointer;
+    border-right: 1px solid #333;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.n-btn.active {
+    background: #00cc44;
+    color: #fff;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+
+
+
+
+
+.contact-section {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 0 20px;
+    color: #000000;   
+    font-family: 'Poppins', sans-serif;
+}
+
+.section-title {
+    font-size: 26px;
+    margin-bottom: 25px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.contact-wrapper {
+    display: flex;
+    gap: 30px;
+}
+
+.contact-form-container {
+    flex: 1.4;
+    background: #0a0a0a;
+    padding: 25px;
+    border-radius: 15px;
+    border: 1px solid #1a1a1a;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+}
+
+.input-group {
+    flex: 1;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group label {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 5px;
+}
+
+.input-group input, .input-group textarea {
+    background: #111;
+    border: 1px solid #222;
+    padding: 10px 12px;
+    border-radius: 8px;
+    color: #fff;
+    outline: none;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.input-group input:focus, .input-group textarea:focus {
+    border-color: #00cc44;
+}
+
+.submit-btn {
+    background: #00cc44;
+    color: #000;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 25px;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.3s;
+}
+
+.submit-btn:hover {
+    background: #00ff55;
+    transform: translateY(-2px);
+}
+
+.contact-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.info-card, .social-grid {
+    background: #0a0a0a;
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid #1a1a1a;
+}
+
+.info-card p {
+    font-size: 13px;
+    color: #ccc;
+    line-height: 1.5;
+}
+
+.email-badge {
+    margin-top: 15px;
+    background: rgba(0, 204, 68, 0.05);
+    padding: 10px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #00cc44;
+    font-size: 13px;
+}
+
+.social-grid h3 {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+.social-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.social-box {
+    background: #111;
+    padding: 15px 5px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: 0.3s;
+}
+
+.social-box i { font-size: 18px; margin-bottom: 5px; color: #888; }
+.social-box span { font-size: 11px; }
+
+.social-box:hover { background: #1a1a1a; }
+.social-box:hover i { color: #00cc44; }
 
 
 
@@ -554,6 +803,310 @@ footer {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.rating-loader-huge {
+    position: relative;
+    width: 220px;
+    height: 220px;
+    margin: 0 auto 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Yazıyı dairenin içine tam ortalayan sihirli blok */
+.rating-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Tam merkezleme */
+    text-align: center;
+    width: 100%;
+    z-index: 10;
+}
+
+.rating-content span {
+    display: block;
+    font-size: 58px; /* Daha okunaklı ve dev */
+    font-weight: 900;
+    color: #ffffff !important; /* Siyahlığı bitiriyoruz, artık bembeyaz */
+    font-family: 'Poppins', sans-serif; /* Modern futbol fontu */
+    line-height: 1;
+    text-shadow: 0 0 15px rgba(0, 204, 68, 0.5); /* Hafif yeşil parlama */
+}
+
+.rating-content small {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    color: #00cc44; /* Yazının altındaki 'REYTING' yeşil kalsın */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 5px;
+}
+
+/* Dairenin kendisi için düzeltme */
+.rating-loader-huge svg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+
+
+
+
+
+
+/* Ana Taşıyıcıyı Yarıya Böl */
+.potm-split-container {
+    display: flex;
+    width: 100%;
+    min-height: 500px;
+    background: #000;
+    border-radius: 30px;
+    overflow: hidden;
+    border: 1px solid #1a1a1a;
+}
+
+.potm-left, .potm-right {
+    flex: 1; /* %50 - %50 Paylaştırır */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+.potm-left {
+    background: linear-gradient(135deg, #0a0a0a 0%, #000 100%);
+    border-right: 1px solid #1a1a1a;
+}
+
+/* Dev Daire ve Animasyon */
+.rating-loader-huge {
+    position: relative;
+    width: 220px; /* Büyüttük */
+    height: 220px;
+    margin: 0 auto 30px;
+}
+
+.rating-loader-huge svg { transform: rotate(-90deg); }
+.rating-bg { fill: none; stroke: #111; stroke-width: 4; }
+.rating-bar {
+    fill: none;
+    stroke: #00cc44;
+    stroke-width: 4;
+    stroke-dasharray: 283;
+    stroke-dashoffset: 50;
+    filter: drop-shadow(0 0 10px #00cc44);
+}
+
+/* Yanıp Sönme ve Dönme Animasyonu */
+.animate-pulse {
+    animation: pulseGlow 2s infinite ease-in-out;
+}
+
+@keyframes pulseGlow {
+    0% { opacity: 0.6; filter: drop-shadow(0 0 5px #00cc44); }
+    50% { opacity: 1; filter: drop-shadow(0 0 20px #00cc44); }
+    100% { opacity: 0.6; filter: drop-shadow(0 0 5px #00cc44); }
+}
+
+/* Yazı Stilleri */
+#potm-name {
+    font-size: 42px;
+    color: #fff;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+}
+
+.massive-stats {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+}
+
+.m-box span { font-size: 30px; font-weight: 900; color: #00cc44; display: block; }
+.m-box small { color: #555; font-weight: bold; }
+
+/* Sağ Taraf Placeholder */
+.fixture-box { width: 100%; text-align: center; }
+.side-title { color: #fff; margin-bottom: 20px; font-size: 24px; border-bottom: 2px solid #00cc44; display: inline-block; padding-bottom: 5px;}
+.placeholder-content { color: #333; font-style: italic; margin-top: 50px;}
+
+
+
+
+
+
+
+/* Tablo Genel Kutusu */
+.league-table-container {
+    width: 100%;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 15px;
+}
+
+.table-title {
+    color: #00cc44;
+    font-size: 18px;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    text-align: left;
+    border-left: 3px solid #00cc44;
+    padding-left: 10px;
+}
+
+/* Tablo Tasarımı */
+.league-table {
+    width: 100%;
+    border-collapse: collapse;
+    color: #eee;
+    font-family: 'Poppins', sans-serif;
+}
+
+.league-table th {
+    text-align: left;
+    color: #555;
+    font-size: 12px;
+    padding: 10px;
+    border-bottom: 1px solid #222;
+}
+
+.league-table td {
+    padding: 15px 10px;
+    border-bottom: 1px solid #111;
+    font-size: 14px;
+}
+
+/* Takım İsimleri */
+.team-name {
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* Puan Sütunu */
+.points {
+    color: #00cc44;
+    font-weight: 900;
+}
+
+/* 1. Sıradaki Takımı Parlat */
+.rank-1 {
+    background: linear-gradient(90deg, rgba(0, 204, 68, 0.05) 0%, transparent 100%);
+}
+
+.rank-1 td:first-child {
+    color: #00cc44;
+    font-weight: bold;
+}
+
+/* Hover Efekti */
+.league-table tr:hover {
+    background: rgba(255, 255, 255, 0.03);
+    transition: 0.3s;
+}
+
+.league-table-container {
+    width: 90%;
+    padding: 25px;
+    /* BURASI ÖNEMLİ: Siyahı hafifçe griye açarak belirginleştiriyoruz */
+    background: #151515; 
+    /* Kenarlara çok hafif bir ışık vuruyoruz ki kutu olduğu belli olsun */
+    border: 1px solid #252525; 
+    border-radius: 20px;
+    /* Altına hafif bir derinlik gölgesi */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+}
+
+
+
+
+
+
+
+
+/* Sağ tarafın hizalamasını güncelle */
+.potm-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* İçindekileri dikeyde ortalar */
+    align-items: center;     /* İçindekileri yatayda ortalar */
+    gap: 30px;              /* Tablo ile buton arasındaki boşluk */
+}
+
+/* Butonun durduğu alan */
+.action-area {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* Siyah alanda parlayacak narin buton stili */
+.btn-main-action {
+    display: inline-block;
+    padding: 14px 40px;
+    background: transparent;
+    color: #ffffff;
+    border: 1px solid #00cc44; /* Yeşil çerçeve */
+    border-radius: 8px; /* Daha modern, hafif keskin köşeler */
+    font-size: 13px;
+    font-weight: 800;
+    text-decoration: none;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 0 15px rgba(0, 204, 68, 0.1);
+}
+
+/* Üstüne gelince "Ateş" etsin */
+.btn-main-action:hover {
+    background: #00cc44;
+    color: #000;
+    box-shadow: 0 0 30px rgba(0, 204, 68, 0.4);
+    transform: scale(1.05); /* Hafif büyüme efekti */
+}
+
+.btn-main-action .arrow {
+    margin-left: 10px;
+    transition: margin 0.3s ease;
+}
+
+.btn-main-action:hover .arrow {
+    margin-left: 20px; /* Ok işareti sağa kaysın */
+}
+
+
+
+
+
+
+
+
+
+@media (max-width: 768px) {
+    .contact-wrapper { flex-direction: column; }
+    .form-row { flex-direction: column; }
+}
 
 
 

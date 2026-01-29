@@ -118,6 +118,7 @@
       25 Temmuz 2023 tarihinde Yaylapınar FC kuruldu. Futbolda geniş kitlelere hitap eden oyun stilimizle futbolseverlerin beğenisini kazandık. Takım ruhunu ön plana çıkaran, futbolun ne kadar eğlenceli olduğunu ve arkadaşlık bağlarının ne kadar güçlü olduğunu gösteren bir kulüp olduk. 2024 Yılında Halısaha Ligi'ne katılarak sahada mücadele etmeye başladık. Amacımız, futbolun birleştirici gücünü kullanarak hem sahada hem de saha dışında güçlü bir topluluk oluşturmak.
     </p>
   </div>
+  
 
 <div class="form-container">
   <h2>24-25 Formamız</h2>
@@ -181,63 +182,161 @@
 
 <!-- News-İtem slider java kodları-->
 <script>
+let yfc_sliderIndex = 0;
+let yfc_sliderSure = 5000; 
+let yfc_sliderZamanlayici;
+let yfc_barZamanlayici;
 
-  function showNews(index) {
-    const items = document.querySelectorAll('.news-item');
-    const btns = document.querySelectorAll('.n-btn');
-
-    items.forEach(item => item.classList.remove('active'));
-    btns.forEach(btn => btn.classList.remove('active'));
-
-    items[index].classList.add('active');
-    btns[index].classList.add('active');
+// Kullanıcı bir numaraya tıkladığında çalışan ana kapı
+function showNews(n) {
+    // Önce çalışan tüm süreçleri durdur (Atlamayı engelleyen kısım)
+    clearTimeout(sliderZamanlayici);
+    clearInterval(barZamanlayici);
+    
+    // Haberi göster
+    haberGoster(n);
 }
 
-let currentNewsIndex = 0; // Kaçıncı haberde olduğumuzu tutar
-const totalNews = 3; // Toplam haber sayın (Eğer haber sayın artarsa burayı güncellersin)
+function haberGoster(n) {
+    const haberler = document.querySelectorAll('.news-item');
+    const butonlar = document.querySelectorAll('.n-btn');
+    
+    if (haberler.length === 0) return;
 
-// Otomatik geçiş fonksiyonu
-function autoShowNews() {
-    currentNewsIndex++; // Bir sonraki habere geç
+    // Sınırları belirle
+    if (n >= haberler.length) n = 0;
+    if (n < 0) n = haberler.length - 1;
+    sliderIndex = n;
+
+    // Görseli ve butonları temizle
+    butonlar.forEach(b => {
+        b.classList.remove('active');
+        b.style.setProperty('--progress', '0%');
+    });
+    haberler.forEach(h => h.classList.remove('active'));
+
+    // Aktif olanı işaretle
+    haberler[sliderIndex].classList.add('active');
+    butonlar[sliderIndex].classList.add('active');
+
+    // Bar animasyonunu başlat
+    barHareket(butonlar[sliderIndex]);
     
-    if (currentNewsIndex >= totalNews) {
-        currentNewsIndex = 0; // Son habere geldiyse başa dön
-    }
-    
-    showNews(currentNewsIndex); // Haberi değiştir
+    // 5 saniye sonra bir sonraki habere geçmek için plan yap
+    sliderZamanlayici = setTimeout(() => {
+        haberGoster(sliderIndex + 1);
+    }, sliderSure);
 }
 
-// Her 5 saniyede bir (5000 milisaniye) autoShowNews fonksiyonunu çalıştır
-let newsInterval = setInterval(autoShowNews, 5000);
-
-// Kullanıcı bir numaraya kendisi tıklarsa, otomatik geçişi sıfırlayalım ki karışmasın
-function showNews(index) {
-    currentNewsIndex = index; // Manuel tıklanan indexi kaydet
+function barHareket(buton) {
+    let baslangic = Date.now();
     
-    const items = document.querySelectorAll('.news-item');
-    const btns = document.querySelectorAll('.n-btn');
+    barZamanlayici = setInterval(() => {
+        let gecenSure = Date.now() - baslangic;
+        let yuzde = (gecenSure / sliderSure) * 100;
 
-    items.forEach(item => item.classList.remove('active'));
-    btns.forEach(btn => btn.classList.remove('active'));
-
-    items[index].classList.add('active');
-    btns[index].classList.add('active');
-
-    // Kullanıcı tıkladığı için zamanlayıcıyı sıfırlayıp baştan başlatıyoruz
-    clearInterval(newsInterval);
-    newsInterval = setInterval(autoShowNews, 5000);
+        if (yuzde >= 100) {
+            buton.style.setProperty('--progress', '100%');
+            clearInterval(barZamanlayici);
+        } else {
+            buton.style.setProperty('--progress', yuzde + '%');
+        }
+    }, 30);
 }
+
+// Sayfa ilk açıldığında otomatik başlat
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        haberGoster(0);
+    }, 500);
+});
 </script>
-
 <!-- News-İtem slider java kodları-->
 
+<!-- İtem Zaman tuşları Script-->
+<script>
+let sliderIndex = 0;
+let sliderSure = 5000; // 5 Saniye
+let sliderZamanlayici;
+let barZamanlayici;
+
+function haberGoster(n) {
+    let haberler = document.querySelectorAll('.news-item');
+    let butonlar = document.querySelectorAll('.n-btn');
+    
+    if (haberler.length === 0) return;
+
+    // Index sınırlarını ayarla
+    if (n >= haberler.length) n = 0;
+    if (n < 0) n = haberler.length - 1;
+    sliderIndex = n;
+
+    // --- TEMİZLİK OPERASYONU ---
+    // Sayfa ilk açıldığında veya geçişlerde arkada kalan tüm artıkları siler
+    clearTimeout(sliderZamanlayici);
+    clearInterval(barZamanlayici);
+    
+    butonlar.forEach(b => {
+        b.classList.remove('active');
+        b.style.setProperty('--progress', '0%'); // Barı sıfıra çek
+    });
+    haberler.forEach(h => h.classList.remove('active'));
+
+    // --- AKTİFLEŞTİRME ---
+    haberler[sliderIndex].classList.add('active');
+    butonlar[sliderIndex].classList.add('active');
+
+    // Barı ve Yeni Slayt Zamanlayıcısını Başlat
+    barHareket(butonlar[sliderIndex]);
+    
+    sliderZamanlayici = setTimeout(() => {
+        haberGoster(sliderIndex + 1);
+    }, sliderSure);
+}
+
+function barHareket(buton) {
+    let baslangic = Date.now();
+    
+    // Her 30ms'de barın ne kadar dolacağını hesapla
+    barZamanlayici = setInterval(() => {
+        let gecenSure = Date.now() - baslangic;
+        let yuzde = (gecenSure / sliderSure) * 100;
+
+        if (yuzde >= 100) {
+            buton.style.setProperty('--progress', '100%');
+            clearInterval(barZamanlayici);
+        } else {
+            // CSS değişkenine (%) değerini gönder
+            buton.style.setProperty('--progress', yuzde + '%');
+        }
+    }, 30);
+}
+
+// Manuel tıklama fonksiyonu
+function showNews(n) {
+    haberGoster(n);
+}
+
+// --- KRİTİK NOKTA: SAYFA AÇILIŞI ---
+window.addEventListener('load', () => {
+    // Sayfa yüklendikten 500ms sonra sanki ilk butona basılmış gibi başlatır
+    setTimeout(() => {
+        haberGoster(0);
+    }, 500);
+});
+</script>
+<!-- İtem Zaman tuşları Script-->
 
 <!--Ayın Oyuncusu-->
 
+<section class="banner-alani">
+    <a href="https://www.playstation.com/" target="_blank">
+        <img src="Resimler/PS  Reklam Banner (1).png" alt="Takımımızı Takip Edin">
+    </a>
+</section>
 
 <section class="potm-section">
     <div class="potm-split-container">
-        
         <div class="potm-left">
             <div class="potm-card-massive">
                 <div class="rating-loader-huge">
@@ -246,24 +345,24 @@ function showNews(index) {
                         <circle class="rating-bar animate-pulse" cx="50" cy="50" r="45"></circle>
                     </svg>
     <div class="rating-content">
-        <span id="potm-rating">9.5</span>
+        <span id="potm-rating">0.0</span>
         <small>REYTING</small>
     </div>
 </div>
                 
-                <h2 id="potm-name">Hasan Basri</h2>
+                <h2 id="potm-name">-</h2>
                 
                 <div class="massive-stats">
                     <div class="m-box">
-                        <span id="potm-goal">14</span>
+                        <span id="potm-goal">0</span>
                         <small>GOL</small>
                     </div>
                     <div class="m-box">
-                        <span id="potm-assist">12</span>
+                        <span id="potm-assist">0</span>
                         <small>ASİST</small>
                     </div>
                     <div class="m-box">
-                        <span id="potm-match">5</span>
+                        <span id="potm-match">0</span>
                         <small>MAÇ</small>
                     </div>
                 </div>
@@ -287,22 +386,22 @@ function showNews(index) {
                     <th>P</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="puan-tablosu-body">
                 <tr class="rank-1">
-                    <td>1</td>
+                    <td>0</td>
                     <td class="team-name">YAYLAPINAR FC</td>
-                    <td>5</td>
-                    <td>4</td>
-                    <td>1</td>
-                    <td class="points">12</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td class="points">0</td>
                 </tr>
                 <tr class="rank-2">
-                    <td>2</td>
+                    <td>0</td>
                     <td class="team-name">B TAKIMI</td>
-                    <td>5</td>
-                    <td>1</td>
-                    <td>4</td>
-                    <td class="points">3</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td class="points">0</td>
                 </tr>
             </tbody>
         </table>
@@ -322,9 +421,130 @@ function showNews(index) {
     </div>
 </section>
 
+<!--Reyting artış Animasyon script -->
+<script>
+  const reytingiHareketeGecir = () => {
+    // 1. Elementi seç (Eğer h2 değilse burayı .rating-loader-huge span falan yap)
+    const el = document.querySelector('.rating-loader-huge span');
+    
+    if (!el) {
+        console.log("Hata: Reyting elementi bulunamadı!");
+        return;
+    }
 
+    // 2. Hedef rakamı al (İçinde '9.2' yazdığını varsayıyoruz)
+    const hedefSkor = parseFloat(el.innerText) || 9.2;
+    el.innerText = "0.0"; // Başlangıçta sıfırla
 
+    // 3. İzleyiciyi kur
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                console.log("Görüldü! Sayma başlıyor...");
+                let baslangic = 0;
+                const hiz = 30; // ms
+                const adim = hedefSkor / 50;
 
+                const zamanlayici = setInterval(() => {
+                    baslangic += adim;
+                    if (baslangic >= hedefSkor) {
+                        el.innerText = hedefSkor.toFixed(1);
+                        clearInterval(zamanlayici);
+                    } else {
+                        el.innerText = baslangic.toFixed(1);
+                    }
+                }, hiz);
+
+                observer.unobserve(el); // Bir kere sayınca dur
+            }
+        });
+    }, { threshold: 0.5 }); // Yarısı görününce başla
+
+    observer.observe(el);
+};
+
+// Sayfa yüklendikten 2 saniye sonra (Sheets verisi gelsin diye) izleyiciyi aktif et
+window.addEventListener('load', () => {
+    setTimeout(reytingiHareketeGecir, 2000);
+});
+</script>
+<!--Reyting artış Animasyon script -->
+
+<!-- Puan Tablosu Script-->
+<script>
+async function tabloyuGuncelle() {
+  // Senin paylaştığın Tablo ID'si
+  const SHEET_ID = '1dSBBN6FyR6GDQ2b8oL3QvJPGWGHtSyLlalpShczg_mo';
+  // Sayfa adı (Google Sheet'in altındaki sekme adı)
+  const SHEET_NAME = 'PuanDurumu'; 
+  
+  // API KEY GEREKTİRMEYEN LİNK
+  const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${SHEET_NAME}`;
+
+  try {
+    const response = await fetch(url);
+    const data = await response.text();
+    
+    // CSV verisini satırlara ayırır
+    const rows = data.split('\n').map(row => {
+      return row.split(',').map(cell => cell.replace(/"/g, '').trim());
+    });
+
+    const tabloBody = document.getElementById('puan-tablosu-body');
+    if (!tabloBody) return;
+
+    // Anasayfa mı Fikstür mü anlamak için sütun sayısına bakar
+    const sutunSayisi = document.querySelectorAll('.league-table thead th').length;
+    tabloBody.innerHTML = ''; 
+
+    // İlk satır başlık olduğu için i=1'den başlıyoruz
+    for (let i = 1; i < rows.length; i++) {
+      const row = rows[i];
+      if (!row[0]) continue; // Boş satır varsa atla
+
+      let satirHtml = "";
+      
+      if (sutunSayisi === 6) { 
+        // ANASAYFA MODU: Sıra(0), Takım(1), O(2), G(3), M(5), P(9)
+        satirHtml = `
+          <tr class="${row[0] == '1' ? 'rank-1' : ''}">
+            <td>${row[0]}</td>
+            <td class="team-name">${row[1]}</td>
+            <td>${row[2]}</td>
+            <td>${row[3]}</td>
+            <td>${row[5]}</td>
+            <td class="points">${row[9]}</td>
+          </tr>`;
+      } else {
+        // FİKSTÜR MODU: Tüm detaylar
+        satirHtml = `
+          <tr class="${row[0] == '1' ? 'rank-1' : ''}">
+            <td>${row[0]}</td>
+            <td class="team-name">${row[1]}</td>
+            <td>${row[2]}</td><td>${row[3]}</td><td>${row[4]}</td><td>${row[5]}</td>
+            <td>${row[6]}</td><td>${row[7]}</td><td>${row[8]}</td>
+            <td class="points">${row[9]}</td>
+            <td class="form-row">${formToplariOlustur(row[10])}</td>
+          </tr>`;
+      }
+      tabloBody.innerHTML += satirHtml;
+    }
+  } catch (error) {
+    console.error("Tablo yüklenirken hata oluştu:", error);
+  }
+}
+
+function formToplariOlustur(veriler) {
+  if (!veriler) return '';
+  return veriler.split('-').map(s => { // E-tabloda G-G-M-G-G gibi tire ile yazarsan daha iyi olur
+    let renk = s === 'G' ? 'win' : (s === 'M' ? 'loss' : 'draw');
+    return `<span class="form-dot ${renk}">${s}</span>`;
+  }).join('');
+}
+
+document.addEventListener('DOMContentLoaded', tabloyuGuncelle);
+</script>
+<!-- Puan Tablosu Script-->
 
   <!-- İletişim Section -->
 

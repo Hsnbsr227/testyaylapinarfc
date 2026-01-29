@@ -349,26 +349,55 @@ header .title-p:hover {
 
 /* Liderler (Menajer, Kaptan, 2. Kaptan) */
 .liderler {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-  margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin: 40px auto;
+    padding: 20px;
+    max-width: 1100px;
 }
 
 .lider-kart {
-  background: #fff;
-  border-radius: 12px;
-  padding: 20px;
-  width: 220px;
-  text-align: center;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  transition: box-shadow 0.3s ease;
-  cursor: pointer;
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 30px 20px;
+    width: 280px;
+    text-align: center;
+    position: relative;
+    /* Başlangıç gölgesi: Çok hafif ve zarif */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    border: 1px solid #eee;
+    overflow: hidden;
+    cursor: pointer;
 }
 
 .lider-kart:hover {
- box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+    transform: translateY(-10px); /* Kartı yukarı kaldırır */
+    /* Derinlik katan güçlü gölge efekti */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    border-color: #313131;
+}
+.lider-kart::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: #00cc44; /* Yaylapınar Yeşili */
+}
+
+.lider-kart:hover .lider-icon {
+    transform: scale(1.2); /* İkonu büyütür */
+}
+
+.lider-icon {
+    font-size: 35px;
+    color: #303130;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
 }
 
 .lider-kart img {
@@ -378,9 +407,18 @@ header .title-p:hover {
 }
 
 .lider-kart h3 {
-  margin: 6px 0;
-  font-size: 18px;
-  color: #0a2a66;
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.lider-kart p {
+    font-size: 14px;
+    color: #666;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 /* Yıldızları Görün Butonu */
@@ -525,3 +563,386 @@ footer {
 
   /*!Banner Kadro resim css kodu bitti ?*/
 }
+
+
+
+
+
+
+
+/* --- MODAL (PANEL) ANA YAPI --- */
+.modal {
+    display: none; /* Başlangıçta gizli */
+    position: fixed;
+    z-index: 9999; /* Her şeyin en üstünde görünsün */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85); /* Arka plan karartma */
+    backdrop-filter: blur(5px); /* Arkayı hafif bulanıklaştırır, kalite katar */
+}
+
+/* --- PANEL KUTUSU --- */
+.modal-content {
+    background-color: #fff;
+    margin: 5% auto; /* Üstten %5 boşluk, yatayda orta */
+    width: 90%;
+    max-width: 450px;
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    animation: panelAcilis 0.4s ease-out; /* Panel yukarıdan aşağı süzülsün */
+}
+
+@keyframes panelAcilis {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* --- KAPATMA (X) BUTONU --- */
+.close-btn {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 32px;
+    color: #fff;
+    cursor: pointer;
+    z-index: 10;
+    transition: 0.3s;
+}
+.close-btn:hover { color: #00cc44; }
+
+/* --- KARTIN ÜZERİNDEKİ "DETAYLARI GÖR" BUTONU --- */
+.detay-btn {
+    margin-top: 15px;
+    margin-left: -20px;
+    background: #fff;
+    color: #006400;
+    border: 2px solid #006400;
+    padding: 8px 18px;
+    border-radius: 25px;
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
+}
+
+.detay-btn:hover {
+    background: #006400;
+    color: #fff;
+    box-shadow: 0 5px 15px rgba(0, 100, 0, 0.3);
+}
+
+/* --- PANEL İÇİ TASARIM ELEMANLARI --- */
+.modal-ust-kisim {
+    background: linear-gradient(135deg, #1a1a1a, #000);
+    padding: 40px 20px;
+    text-align: center;
+    color: white;
+}
+
+.modal-oyuncu-img {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    border: 4px solid #00cc44;
+    object-fit: cover;
+    margin-bottom: 15px;
+    box-shadow: 0 0 20px rgba(0, 204, 68, 0.2);
+}
+
+.modal-istatistikler {
+    display: flex;
+    justify-content: space-around;
+    padding: 30px 20px;
+    background: #fff;
+}
+
+.istatistik-kutu b {
+    display: block;
+    font-size: 26px;
+    color: #1a1a1a;
+    font-weight: 800;
+}
+
+.istatistik-kutu p {
+    font-size: 12px;
+    color: #888;
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+.modal-alt-bar {
+    background: #f8f8f8;
+    padding: 15px;
+    text-align: center;
+    border-top: 1px solid #eee;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.modal-alt-bar span {
+    color: #00cc44;
+    font-size: 18px;
+    margin-left: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Ana Konteynır */
+.kadro-wrapper {
+    display: flex;
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+    gap: 30px; /* İstediğin boşluğu buradan ayarlayabilirsin */
+    align-items: flex-start;
+} 
+
+.saha-konteyner {
+    flex: 0 0 450px;
+    display: flex;
+    flex-direction: column;
+}
+
+.saha-baslik {
+    height: 80px; /* Başlık yüksekliği */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.saha-baslik h2 {
+    color: #00cc44;
+    font-size: 24px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin: 0;
+    /* Hafif bir gölge */
+    text-shadow: 0 0 10px rgba(0, 204, 68, 0.3);
+}
+
+.saha-baslik p {
+    color: #666;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-top: 5px;
+}   
+
+/* Görseli Arka Plan Yapan Saha */
+.futbol-sahasi-img {
+    width: 100%;
+    height: 600px; /* Panel ile aynı yükseklik */
+    background-image: url('Resimler/saha.png');
+    background-size: 100% 100%;
+    position: relative;
+    border: 3px solid #333;
+    border-radius: 15px; /* Her tarafı yuvarladık, artık ayrık duruyor */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* Oyuncu İkonları */
+.oyuncu-etiket {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: translateX(-50%);
+}
+
+.oyuncu-etiket::before {
+    content: attr(data-no);
+    width: 36px;
+    height: 36px;
+    /* Neon yeşili gradyan ve siyah arka plan */
+    background: radial-gradient(circle, #1a1a1a 0%, #036a17 100%);
+    color: #ffffff; /* Numara yeşil olsun */
+    border: 2px solid #00cc44;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 14px;
+    margin-bottom: 4px;
+    /* İkonun etrafına hafif bir parlama (glow) */
+    box-shadow: 0 0 15px rgba(0, 204, 68, 0.4);
+    transition: all 0.3s ease;
+}
+
+.oyuncu-etiket span {
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px #000;
+    background: rgba(0, 0, 0, 0.6); /* İsmin okunması için hafif arka plan */
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+/* 3-1-2 POZİSYONLARI (Görsele göre ince ayar) */
+.f-ismail { top: 12%; left: 32%; }
+.f-hasan  { top: 12%; left: 68%; }
+
+.o-kadir  { top: 46%; left: 50%; }
+
+.d-halim  { bottom: 28%; left: 22%; }
+.d-eren   { bottom: 28%; left: 50%; }
+.d-yunus  { bottom: 28%; left: 78%; }
+
+.k-yusuf  { bottom: 5%; left: 50%; }
+
+/* Sağ Taraf Boşluğu */
+.sag-icerik {
+    flex: 1;
+}
+
+
+/* İstatistik Paneli Genel */
+.istatistik-paneli {
+    flex: 1;
+    margin-top: 80px; /* Sahanın başlığı kadar boşluk (Hizalama noktası) */
+    height: 600px; /* Saha resmiyle aynı yükseklik */
+    background: rgba(18, 18, 18, 0.95);
+    backdrop-filter: blur(15px);
+    padding: 30px;
+    border: 3px solid #333;
+    border-radius: 15px; /* Her tarafı yuvarladık */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    box-sizing: border-box;
+}
+
+.panel-baslik {
+    font-size: 18px;
+    font-weight: 700;
+    color: #00cc44;
+    text-align: left;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Skor Kartı Tasarımı */
+.skor-kart-yeni {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+.skor-kart-yeni:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateX(5px);
+}
+
+.kart-ust {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.kart-ust .etiket {
+    font-size: 10px;
+    color: #888;
+    letter-spacing: 1px;
+}
+
+
+.kart-ust .sayi {
+    font-size: 22px;
+    font-weight: 900;
+    color: #fff;
+}
+
+.kart-orta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.kart-orta .isim {
+    margin-left: 0 !important;
+    padding-left: 5px;
+    text-align: left;
+}
+
+
+.performans-bar {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.doluluk {
+    height: 100%;
+    background: linear-gradient(90deg, #00cc44, #006400);
+    border-radius: 10px;
+    transition: width 0.5s ease-in-out;
+}
+
+
+
+/* Mobil Uyumluluk */
+@media (max-width: 900px) {
+    .kadro-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+    .istatistik-paneli {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 30px;
+    }
+}
+
+
+
+/*? Reklam Banner Css Kodları Başladı ?*/
+
+/* Kadro Sayfası Küçük Reklam Banner */
+.ad-banner{
+    display: flex;
+    justify-content: flex-start; /* Sahanın altına hizalanması için sola yasla */
+    width: 450px; /* Sahanın genişliği ile birebir aynı */
+    margin: -130px 250px 50px 420px; /* Sahaya yaklaştırmak için negatif margin */
+    padding: 0;
+}
+
+
+
+/* Mobil için */
+@media (max-width: 900px) {
+    .ad-banner-kadro {
+        width: 100%;
+        max-width: 450px;
+        margin: 20px auto;
+        justify-content: center;
+    }
+}
+/*! Reklam Banner Css Kodları Bitti ?*/

@@ -1,8 +1,20 @@
+
 body {
   margin: 0;
   font-family: 'Poppins', Arial, sans-serif;
   background-color: #f8f8f8; /* hafif beyaz */
   color: #000;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /*? Header Css Kodları Başladı */
@@ -204,3 +216,669 @@ header .title-p:hover {
 }
 
 /*! Navbar Css Kodları Bitti */
+
+/*?Scroll bar Css Kodları Başladı ?*/
+
+/* Genel scroll çubuğu */
+::-webkit-scrollbar {
+    width: 18px;  /* Çubuğun genişliği */
+}
+
+/* Çubuğun iç kısmı (track) */
+::-webkit-scrollbar-track {
+    background: #f0f0f0; /* Açık arka plan */
+    border-radius: 6px;
+}
+
+/* Çubuğun kendisi (thumb) */
+::-webkit-scrollbar-thumb {
+    background: #25d366; /* Yeşil ton */
+    border-radius: 6px;
+    border: 3px solid #f0f0f0; /* Track ile uyumlu kenar */
+}
+
+/* Hover efekti */
+::-webkit-scrollbar-thumb:hover {
+    background: #128c7e; /* Daha koyu yeşil */
+}
+/*! Scroll bar Css Kodları Bitti ?*/
+
+/*?Footer Css Kodları Başladı ?*/
+footer {
+  background-color: #000; 
+  color: #fff;
+  padding: 50px 20px 20px 20px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-container div h3 {
+  margin-bottom: 15px;
+  font-size: 20px;
+  color: #00cc44;
+}
+
+.footer-container div p {
+  margin: 5px 0;
+  font-size: 16px;
+}
+
+.footer-social a {
+  color: #fff;
+  margin-right: 15px;
+  font-size: 22px;
+  transition: color 0.3s;
+}
+
+.footer-social a:hover {
+  color: #00cc44;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding: 20px 0 0 0;
+  border-top: 1px solid #444;
+  margin-top: 30px;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+
+
+/*!Footer Css Kodları Bitti ?*/
+
+
+
+.fikstur-container {
+    max-width: 1100px;
+    margin: 50px auto;
+    padding: 0 20px;
+    min-height: 80vh; /* İçerik az olsa bile footer'ı aşağıda tutar */
+}
+
+/* BAŞLIKLAR */
+.sayfa-basligi {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.sayfa-basligi h2 {
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.vurgu { color: #00cc44; }
+
+.grup-etiket {
+    font-size: 20px;
+    font-weight: 700;
+    border-bottom: 3px solid #00cc44;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* MAÇ KARTLARI (JavaScript'in oluşturduğu alan) */
+#mac-listesi {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.mac-kart {
+    background: #fff;
+    border-radius: 8px;
+    padding: 25px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+    
+    cursor: pointer;
+}
+
+.mac-kart:hover {
+  background: #fff7f7;
+}
+
+/* SOL TARAF: TARİH */
+.mac-tarih {
+    flex: 1;
+    font-weight: 700;
+    color: #666;
+    font-size: 15px;
+    border-right: 2px solid #eee;
+}
+
+/* ORTA TARAF: SKORBOARD */
+.skor-alani {
+    flex: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+}
+
+.takim {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 140px;
+}
+
+.takim img {
+    width: 65px;
+    height: 65px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.takim span {
+    font-weight: 700;
+    font-size: 14px;
+    text-align: center;
+}
+
+/* VS ve SKOR STİLİ */
+.vs {
+    font-size: 28px;
+    font-weight: 900;
+    color: #ccc;
+}
+
+.skor {
+    font-size: 32px;
+    font-weight: 900;
+    color: #00cc44;
+    letter-spacing: 5px;
+}
+
+/* SAĞ TARAF: EKSTRA BİLGİ (Maçın Adamı vb.) */
+.mac-ekstra {
+    flex: 1.5;
+    text-align: right;
+    font-size: 14px;
+    font-weight: 600;
+    color: #888;
+}
+
+/* TAMAMLANAN MAÇLAR İÇİN ÖZEL RENK */
+.mac-kart.tamamlandi {
+    border-left: 8px solid #00cc44;
+}
+
+/* MODAL GENEL STİL */
+/* MODAL ARKA PLAN */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px); /* Arkayı efsane bulanıklaştırır */
+    /* TAM ORTALAMA SİHRİ */
+    display: none; /* JS ile block olacak */
+    align-items: center;
+    justify-content: center;
+}
+
+/* ELİT KART TASARIMI */
+.elit-kart {
+    background: #fff;
+    width: 90%;
+    max-width: 420px;
+    border-radius: 24px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    padding: 40px 20px;
+    animation: elitAcilis 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes elitAcilis {
+    from { transform: scale(0.8) translateY(30px); opacity: 0; }
+    to { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+/* DEKORASYONLAR */
+.modal-ust-dekor {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 8px;
+    background: linear-gradient(90deg, #00cc44, #00882e);
+}
+
+.gold-glow {
+    font-size: 50px;
+    color: #ffcc00;
+    filter: drop-shadow(0 0 15px rgba(255, 204, 0, 0.6));
+    margin-bottom: 10px;
+}
+
+.ust-etiket {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #888;
+    margin-bottom: 20px;
+}
+
+/* OYUNCU RESMİ VE IŞIK EFEKTİ */
+.oyuncu-cerceve {
+    position: relative;
+    width: 180px; /* Biraz daha hacim kazandırdık */
+    height: 180px;
+    margin: 20px auto; 
+    display: flex; /* İçindeki her şeyi ortalamak için şart */
+    align-items: center; /* Dikeyde tam orta */
+    justify-content: center;
+}
+
+#modal-oyuncu-resim {
+    width: 150px; /* Çerçeveden biraz küçük kalarak ışığın parlamasına izin verir */
+    height: 150px;
+    border-radius: 50%;
+    z-index: 2;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.cerceve-isik {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: linear-gradient(45deg, transparent, #00cc44, transparent, #00cc44);
+    animation: donme 3s linear infinite; /* Biraz daha hızlı ve enerjik döner */
+    z-index: 1;
+}
+
+@keyframes donme { 100% { transform: rotate(360deg); } }
+
+/* İSİM VE AYRAÇ */
+#modal-oyuncu-adi {
+    font-size: 28px;
+    font-weight: 900;
+    color: #1a1a1a;
+    margin: 10px 0;
+}
+
+.ayrac {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin: 15px 0;
+}
+
+.ayrac span { width: 50px; height: 2px; background: #eee; }
+.ayrac i { color: #ffcc00; font-size: 14px; }
+
+/* BUTON */
+.btn-havali {
+    background: #1a1a1a;
+    color: #fff;
+    border: none;
+    padding: 15px 50px;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.btn-havali:hover {
+    background: #00cc44;
+    transform: translateY(-3px);
+    box-shadow: 0 15px 25px rgba(0, 204, 68, 0.3);
+}/* MODAL ARKA PLAN */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px); /* Arkayı efsane bulanıklaştırır */
+    /* TAM ORTALAMA SİHRİ */
+    display: none; /* JS ile block olacak */
+    align-items: center;
+    justify-content: center;
+}
+
+/* ELİT KART TASARIMI */
+.elit-kart {
+    background: #fff;
+    width: 90%;
+    max-width: 420px;
+    border-radius: 24px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    padding: 40px 20px;
+    animation: elitAcilis 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes elitAcilis {
+    from { transform: scale(0.8) translateY(30px); opacity: 0; }
+    to { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+/* DEKORASYONLAR */
+.modal-ust-dekor {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 8px;
+    background: linear-gradient(90deg, #00cc44, #00882e);
+}
+
+.gold-glow {
+    font-size: 50px;
+    color: #ffcc00;
+    filter: drop-shadow(0 0 15px rgba(255, 204, 0, 0.6));
+    margin-bottom: 10px;
+}
+
+.ust-etiket {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #888;
+    margin-bottom: 20px;
+}
+
+/* OYUNCU RESMİ VE IŞIK EFEKTİ */
+.oyuncu-cerceve {
+    position: relative;
+    width: 160px; height: 160px;
+    margin: 0 auto 20px;
+}
+
+#modal-oyuncu-resim {
+    width: 100%; height: 100%;
+    border-radius: 50%;
+    border: 6px solid #f0f0f0;
+    object-fit: cover;
+    position: relative;
+    z-index: 2;
+}
+
+.cerceve-isik {
+    position: absolute;
+    top: -5px; left: -5px; right: -5px; bottom: -5px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #00cc44, transparent, #00cc44);
+    animation: donme 4s linear infinite;
+}
+
+@keyframes donme { 100% { transform: rotate(360deg); } }
+
+/* İSİM VE AYRAÇ */
+#modal-oyuncu-adi {
+    font-size: 28px;
+    font-weight: 900;
+    color: #1a1a1a;
+    margin: 10px 0;
+}
+
+.ayrac {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin: 15px 0;
+}
+
+.ayrac span { width: 50px; height: 2px; background: #eee; }
+.ayrac i { color: #ffcc00; font-size: 14px; }
+
+/* BUTON */
+.btn-havali {
+    background: #1a1a1a;
+    color: #fff;
+    border: none;
+    padding: 15px 50px;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.btn-havali:hover {
+    background: #00cc44;
+    transform: translateY(-3px);
+    box-shadow: 0 15px 25px rgba(0, 204, 68, 0.3);
+}
+
+/* =========================================
+   PREMIUM LEAGUE SECTION - ELITE WHITE
+   ========================================= */
+
+.premium-league-section {
+    width: 100%;
+    background: transparent;
+    margin: 50px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.elite-container {
+    width: 90%;
+    max-width: 1150px;
+    background: #ffffff; /* Temiz Beyaz Zemin */
+    border-radius: 20px;
+    padding: 35px;
+    /* Narin ve derinlik katan Plus gölge */
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+/* BAŞLIK ALANI */
+.table-header-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #f8f8f8;
+    padding-bottom: 20px;
+}
+
+.table-main-title {
+    font-size: 22px;
+    font-weight: 800;
+    color: #1a1a1a;
+    letter-spacing: 1px;
+}
+
+.table-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.season-badge {
+    background: #f0fdf4;
+    color: #166534;
+    padding: 5px 15px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.live-dot {
+    width: 10px; height: 10px;
+    background: #00cc44;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 204, 68, 0.5);
+}
+
+/* TABLO TASARIMI */
+.elite-table-wrapper {
+    overflow-x: auto; /* Mobilde taşmayı önler */
+}
+
+.premium-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed; /* Sütunları kilitler */
+    min-width: 850px;
+}
+
+/* BAŞLIK SATIRI (Narin Gri) */
+.premium-table thead th {
+    color: #999;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 15px 5px;
+    border-bottom: 2px solid #f0f0f0;
+    text-align: center;
+}
+
+.premium-table .team-col { text-align: left; padding-left: 15px; width: 220px; }
+.premium-table .rank-col { width: 45px; }
+.premium-table .form-col { width: 130px; }
+
+/* VERİ SATIRLARI */
+.premium-table td {
+    padding: 20px 5px;
+    border-bottom: 1px solid #f9f9f9;
+    color: #444;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.team-name {
+    font-weight: 700;
+    color: #222;
+    font-size: 15px;
+}
+
+/* PUAN HÜCRESİ (Vurgulu) */
+.pts-cell {
+    color: #00cc44;
+    font-weight: 800;
+    background: rgba(0, 204, 68, 0.02);
+}
+
+/* FORM TOPLARI (G-M-B) */
+.form-row {
+    display: flex !important; /* Yan yana gelmeye zorla */
+    gap: 6px;                 /* Aradaki o narin boşluk */
+    justify-content: center;
+    align-items: center;
+    min-width: 140px;         /* 5 topun sığması için alan aç */
+}
+
+.form-dot {
+    width: 22px; 
+    height: 22px;
+    border-radius: 50%;
+    font-size: 10px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.win { background: linear-gradient(135deg, #00cc44, #009933); }
+.loss { background: linear-gradient(135deg, #ff4444, #cc0000); }
+.draw { background: linear-gradient(135deg, #aaa, #888); }
+
+.premium-table .form-col {
+    width: 150px; /* 5 topun sığması için ideal genişlik */
+}
+/* YAYLAPINAR FC SATIRI ÖZEL IŞIK */
+.yaylapinar-row {
+    background: rgba(0, 204, 68, 0.03);
+}
+
+/* AYRAÇ ÇİZGİSİ */
+.section-divider {
+    border: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #eee, transparent);
+    margin: 40px 0;
+}
+
+.info-icon {
+    font-size: 16px;
+    color: #00cc44;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: all 0.3s ease;
+    vertical-align: middle;
+}
+
+.info-icon:hover {
+    color: #00882e;
+}
+
+/* Bilgi Paneli (Modal) Arka Plan */
+.info-modal {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    align-items: center;
+    justify-content: center;
+}
+
+/* Panel İçeriği */
+.info-modal-icerik {
+    background: #fff;
+    padding: 40px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 450px;
+    position: relative;
+    text-align: center;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+}
+
+.info-ust h4 { font-weight: 800; margin-bottom: 20px; color: #1a1a1a; letter-spacing: 1px; }
+
+.trophy-icon { font-size: 40px; color: #ffcc00; margin-bottom: 10px; }
+
+.lig-kurallar {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    margin: 20px 0;
+}
+
+.lig-kurallar li {
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 14px;
+    color: #444;
+}
+
+.lig-kurallar i { color: #00cc44; margin-right: 10px; }
+
+.info-kapat {
+    position: absolute;
+    right: 20px; top: 15px;
+    font-size: 28px;
+    cursor: pointer;
+    color: #aaa;
+}

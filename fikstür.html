@@ -1,6 +1,7 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
- <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -31,7 +32,438 @@
     <meta name="keywords" content="yaylapınar, futbol, amatör lig, halı saha, halısaha, meram, yaylapınar fc, yaylapınar futbol kulübü">
     <meta name="author" content="Yaylapınar FC">
 
-
-
-
 </head>
+<body>
+  
+
+<header>
+  <div class="logo">
+    <img src="Resimler/YAYLAPINAR FC TAKIM LOGOSU (1)-Photoroom.png" alt="Yaylapınar FC Logo" />
+  </div>
+
+  <div class="title">
+    <h1>YAYLAPINAR FC</h1>
+    <a class="title-p" href="https://www.google.com/maps/dir//Karaaslan+Hadimi+Park%C4%B1,+Yaylap%C4%B1nar,+Fidanl%C4%B1k+Cd.+No:15,+42010+Meram%2FKonya/@37.808986,32.5167056,21z/data=!4m17!1m7!3m6!1s0x14d08342cc2ee36f:0xd00b977d11db7cfc!2sKaraaslan+Hadimi+Park%C4%B1!8m2!3d37.8089835!4d32.516714!16s%2Fg%2F11cs3zw51h!4m8!1m0!1m5!1m1!1s0x14d08342cc2ee36f:0xd00b977d11db7cfc!2m2!1d32.516714!2d37.8089835!3e3?hl=tr&entry=ttu&g_ep=EgoyMDI1MDQwOS4wIKXMDSoASAFQAw%3D%3D" target="_blank">
+    
+       <p>YAYLA ARENA STADYUMU</p>
+    </a>
+</div>
+
+  <div class="contact">
+    <p class="contact-title">İletişim Numaramız</p>
+  <a href="https://wa.me/905516839068" target="_blank" class="contact-btn">
+    <img src="logo/Whatsapp-logo.ico" alt="WhatsApp" class="whatsapp-icon" />
+    +90 551 683 90 68
+  </a>
+</div>
+</header>
+<nav class="navbar">
+  <ul class="nav-menu">
+    <li><a href="index.html">Ana Sayfa</a></li>
+     <li class="dropdown">
+        <a href="#" class="kadro-link">Kadromuz <span class="arrow">&#9654;</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="kadro.html">Oyuncular</a></li>
+            <li><a href="yildizlar.html">Yıldızlar</a></li>
+         </ul>
+    </li>
+    <li><a href="fikstür.html">Fikstür & Sonuçlar</a></li>
+    <li><a href="haberler.html">Haberler & Duyurular</a></li>
+    <li class="dropdown">
+        <a href="hakkımızda.html">Hakkımızda <span class="arrow">&#9654;</span></a>
+        <ul class="dropdown-menu">
+            <li><a href="hakkımızda.html">Tarihçe</a></li>
+            <li><a href="#">Başarılar</a></li>
+            <li><a href="#">Sponsorlar</a></li>
+        </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+<main class="fikstur-container">
+    <div class="sayfa-basligi">
+        <h2>MAÇ <span class="vurgu">TAKVİMİ</span></h2>
+        <p>Yaylapınar FC'nin zafer yürüyüşü ve gelecek randevuları.</p>
+    </div>
+
+
+
+<section class="premium-league-section">
+    <div class="elite-container">
+        
+        <div class="table-header-box">
+    <h3 class="table-main-title">
+        KONYA HALISAHA LİGİ 
+        <i class="fas fa-info-circle info-icon" onclick="ligPaneliAc()"></i>
+    </h3>
+    <div class="table-info">
+        <span class="season-badge">2025-2026 Sezonu</span>
+        <span class="live-dot"></span> <small>Güncel Veri</small>
+    </div>
+</div>
+
+<!-- İNFO BİLGİ MODALİ -->
+<div id="lig-info-modal" class="info-modal">
+    <div class="info-modal-icerik">
+        <span class="info-kapat" onclick="ligPaneliKapat()">&times;</span>
+        <div class="info-ust">
+            <i class="fas fa-trophy trophy-icon"></i>
+            <h4>LİG KURALLARI VE İŞLEYİŞ</h4>
+        </div>
+        <ul class="lig-kurallar">
+            <li><i class="fas fa-check"></i> Lig toplam <strong>12 maçtan</strong> oluşur.</li>
+            <li><i class="fas fa-star"></i> En çok puan toplayan takım <strong>Şampiyon</strong> ilan edilir.</li>
+            <li><i class="fas fa-balance-scale"></i> Puan eşitliği durumunda <strong>Genel Averaja</strong> bakılır.</li>
+            <li><i class="fas fa-clock"></i> Maçlar 50 dakika üzerinden oynanır.</li>
+            <li><i class="fas fa-shield-alt"></i> Centilmenlik dışı hareketlerde puan silme cezası uygulanır.</li>
+        </ul>
+        <p class="info-alt-not">Yaylapınar FC'ye başarılar dileriz!</p>
+    </div>
+</div>
+ <!-- İNFO BİLGİ MODALİ -->
+
+
+        <div class="elite-table-wrapper">
+            <table class="premium-table">
+                <thead>
+                    <tr>
+                        <th class="rank-col">#</th>
+                        <th class="team-col">TAKIM</th>
+                        <th>O</th>
+                        <th>G</th>
+                        <th>B</th>
+                        <th>M</th>
+                        <th>AG</th>
+                        <th>YG</th>
+                        <th>AV</th>
+                        <th class="pts-header">P</th>
+                        <th class="form-col">FORM</th>
+                    </tr>
+                </thead>
+                <tbody id="puan-tablosu-body">
+                    <tr>
+                        <td colspan="11" class="loading-cell">
+                            <i class="fas fa-spinner fa-spin"></i> Veriler Güncelleniyor...
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</section>
+
+
+    <section class="mac-section">
+        <h3 class="grup-etiket">MAÇLAR VE SONUÇLAR</h3>
+        <div id="mac-listesi">
+            </div>
+    </section>
+</main>
+
+
+
+
+<div id="mvp-modal" class="modal">
+    <div class="modal-icerik elit-kart">
+        <div class="modal-ust-dekor"></div> <span class="kapat-btn" onclick="modalKapat()">&times;</span>
+        
+        <div class="mvp-icerik-alani">
+            <div class="tac-container">
+                <i class="fas fa-crown gold-glow"></i>
+            </div>
+            <p class="ust-etiket">MAÇIN EN DEĞERLİ OYUNCUSU</p>
+            
+            <div class="oyuncu-cerceve">
+                <div class="cerceve-isik"></div>
+                <img src="Resimler/YAYLAPINAR FC TAKIM LOGOSU (1)-Photoroom.png" id="modal-oyuncu-resim" alt="MVP">
+            </div>
+            
+            <h2 id="modal-oyuncu-adi">HASAN BASRİ</h2>
+            <div class="ayrac"><span></span><i class="fas fa-star"></i><span></span></div>
+            <p class="alt-slogan">Yaylapınar FC'nin Gururu!</p>
+        </div>
+
+        <div class="mvp-alt-aksiyon">
+            <button class="btn-havali" onclick="modalKapat()">KAPAT</button>
+        </div>
+    </div>
+</div>
+
+
+
+
+<footer>
+  <div class="footer-container">
+    <div class="footer-about">
+      <h3>Yaylapınar FC</h3>
+      <p>Futbolun birleştirici gücü ile sahada ve saha dışında güçlü bir topluluk oluşturuyoruz. Bizi takip edin!</p>
+    </div>
+    <div class="footer-contact">
+      <h3>İletişim</h3>
+      <p>Adres: Karaaslan Hadimi Parkı, Yaylapınar, Meram/Konya</p>
+      <p>Telefon: +90 551 683 90 68</p>
+      <p>Email: info@yaylapinarfc.com</p>
+    </div>
+    <div class="footer-social">
+      <h3>Sosyal Medya</h3>
+      <a href="https://www.instagram.com/yaylapinarfc/" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="https://wa.me/905516839068" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Yaylapınar FC. Tüm hakları saklıdır.</p>
+  </div>
+</footer>
+
+<!-- Maç Kartlarını Dinamik Olarak Oluşturan Script|MAÇ KSIMINI AYARLA -->
+<script>
+const maclar = [
+    {
+        tarih: "09 OCAK BİTTİ",
+        takim1: "YAYLAPINAR FC",
+        takim2: "YAYLAPINAR FC B",
+        skor: "10 - 6",
+        logo1: "Resimler/YAYLAPINAR FC TAKIM LOGOSU (1)-Photoroom.png",
+        logo2: "Resimler/Yaylapınar Fc çizim logo-Transparan.png",
+        ekstra: "Yayla Arena",
+        mvp: "HASAN BASRİ",
+        tamamlandi: true
+    },
+    {
+        tarih: "20 OCAK BİTTİ",
+        takim1: "YAYLAPINAR FC",
+        takim2: "B TAKIMI",
+        skor: "5 - 2",
+        logo1: "Resimler/YAYLAPINAR FC TAKIM LOGOSU (1)-Photoroom.png",
+        logo2: "logo/B Takımı Logo-Transparan.png",
+        ekstra: "Yayla Arena",
+        mvp: "İsmail Günvar",
+        tamamlandi: true
+    },
+    {
+        tarih: "15 ŞUBAT 21:00",
+        takim1: "B TAKIMI",
+        takim2: "YAYLAPINAR FC",
+        skor: "VS",
+        logo1: "logo/B Takımı Logo-Transparan.png",
+        logo2: "Resimler/YAYLAPINAR FC TAKIM LOGOSU (1)-Photoroom.png",
+        ekstra: "Alakova Park",
+        mvp: "",
+        tamamlandi: false
+    }
+];
+
+function fiksturuDiz() {
+    const liste = document.getElementById('mac-listesi');
+    if(!liste) return;
+    liste.innerHTML = ""; 
+
+    maclar.forEach(mac => {
+        const kartHtml = `
+            <div class="mac-kart ${mac.tamamlandi ? 'tamamlandi' : ''}" 
+                 onclick="mvpGoster('${mac.mvp}')">
+                <div class="mac-tarih">
+                    <span>${mac.tarih}</span>
+                </div>
+                <div class="skor-alani">
+                    <div class="takim">
+                        <img src="${mac.logo1}" alt="">
+                        <span>${mac.takim1}</span>
+                    </div>
+                    <div class="${mac.tamamlandi ? 'skor' : 'vs'}">
+                        ${mac.skor}
+                    </div>
+                    <div class="takim">
+                        <img src="${mac.logo2}" alt="">
+                        <span>${mac.takim2}</span>
+                    </div>
+                </div>
+                <div class="mac-ekstra">
+                    <span>${mac.ekstra}</span>
+                </div>
+            </div>
+        `;
+        liste.innerHTML += kartHtml;
+    });
+}
+
+function mvpGoster(oyuncuAdi) {
+    if(!oyuncuAdi || oyuncuAdi === "" || oyuncuAdi === "undefined") return;
+
+    const modal = document.getElementById("mvp-modal");
+    document.getElementById("modal-oyuncu-adi").innerText = oyuncuAdi;
+    modal.style.display = "block";
+}
+
+function modalKapat() {
+    document.getElementById("mvp-modal").style.display = "none";
+}
+
+function mvpGoster(oyuncuAdi) {
+    if(!oyuncuAdi || oyuncuAdi === "" || oyuncuAdi === "undefined") return;
+
+    const modal = document.getElementById("mvp-modal");
+    document.getElementById("modal-oyuncu-adi").innerText = oyuncuAdi;
+    
+    // Flex yaparak CSS'deki ortalamayı aktif ediyoruz
+    modal.style.display = "flex"; 
+}
+
+// Ekranın herhangi bir yerine tıklayınca kapatma
+window.onclick = function(event) {
+    const modal = document.getElementById("mvp-modal");
+    if (event.target == modal) {
+        modalKapat();
+    }
+}
+
+window.onload = fiksturuDiz;
+</script>
+<!-- Maç Kartlarını Dinamik Olarak Oluşturan Script -->
+
+
+<!--Puan Tablosu Scirpt-->
+<script>
+    async function tabloyuGuncelle() {
+        // 1. Google Sheets Bağlantı Ayarları
+        const SHEET_ID = '1dSBBN6FyR6GDQ2b8oL3QvJPGWGHtSyLlalpShczg_mo';
+        const SHEET_NAME = 'PuanDurumu'; 
+        const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${SHEET_NAME}`;
+
+        try {
+            const response = await fetch(url);
+            const data = await response.text();
+            
+            // 2. CSV Verisini Satırlara ve Hücrelere Ayırır
+            const rows = data.split('\n').map(row => {
+                return row.split(',').map(cell => cell.replace(/"/g, '').trim());
+            });
+
+            const tabloBody = document.getElementById('puan-tablosu-body');
+            if (!tabloBody) return;
+            
+            tabloBody.innerHTML = ''; 
+
+            // 3. Verileri Döngüye Sok ve Tabloyu İnşa Et
+            for (let i = 1; i < rows.length; i++) {
+                const row = rows[i];
+                if (!row[1] || row[1] === "") continue;
+
+                const isYaylapinar = row[1].toUpperCase().includes("YAYLAPINAR");
+
+                // BURASI KRİTİK: Sheets'teki 10, 11, 12, 13 ve 14. sütunları (K, L, M, N, O) birleştiriyoruz
+                const formVerisi = [row[10], row[11], row[12], row[13], row[14]].join(',');
+
+                const satirHtml = `
+                    <tr class="${isYaylapinar ? 'yaylapinar-row' : ''}">
+                        <td class="rank-col">${row[0]}</td>
+                        <td class="team-col">
+                            <div class="team-flex">
+                                <span class="team-name">${row[1]}</span>
+                            </div>
+                        </td>
+                        <td>${row[2]}</td><td>${row[3]}</td><td>${row[4]}</td><td>${row[5]}</td>
+                        <td>${row[6]}</td><td>${row[7]}</td><td>${row[8]}</td>
+                        <td class="pts-cell">${row[9]}</td>
+                        <td class="form-col">
+                            <div class="form-row">
+                                ${formToplariOlustur(formVerisi)}
+                            </div>
+                        </td>
+                    </tr>`;
+                tabloBody.innerHTML += satirHtml;
+            }
+        } catch (error) {
+            console.error("Google Sheets hatası:", error);
+            document.getElementById('puan-tablosu-body').innerHTML = 
+                '<tr><td colspan="11" style="color:red; padding:20px;">Veri bağlantı hatası!</td></tr>';
+        }
+    }
+
+    // FORM TOPLARINI PARÇALAYIP DİZEN FONKSİYON
+    function formToplariOlustur(veriler) {
+        if (!veriler) return '';
+        
+        // Virgülle ayrılmış tüm hücreleri temizleyip diziye çevirir
+        const harfler = veriler.split(',').filter(h => h.trim() !== "" && h.trim() !== "undefined"); 
+        
+        let htmlSonuc = '';
+        harfler.forEach(h => {
+            let harf = h.trim().toUpperCase();
+            let renkSinifi = '';
+            if (harf === 'G') renkSinifi = 'win';      
+            else if (harf === 'M') renkSinifi = 'loss'; 
+            else if (harf === 'B') renkSinifi = 'draw'; 
+            
+            if (renkSinifi !== '') {
+                htmlSonuc += `<span class="form-dot ${renkSinifi}">${harf}</span>`;
+            }
+        });
+        return htmlSonuc;
+    }
+
+    // MERKEZİ TETİKLEYİCİ
+    window.addEventListener('load', () => {
+        tabloyuGuncelle();
+        if (typeof fiksturuDiz === "function") fiksturuDiz();
+    });
+</script>
+<!--Puan Tablosu Scirpt-->
+
+
+
+<!--Lig İnfo Panel Açma/Kapama Script-->
+<script>
+
+    function ligPaneliAc() {
+    document.getElementById("lig-info-modal").style.display = "flex";
+}
+
+function ligPaneliKapat() {
+    document.getElementById("lig-info-modal").style.display = "none";
+}
+
+// Dışarı tıklandığında kapansın
+window.onclick = function(event) {
+    const modal = document.getElementById("lig-info-modal");
+    if (event.target == modal) {
+        ligPaneliKapat();
+    }
+}
+
+</script>
+<!--Lig İnfo Panel Açma/Kapama Script-->
+
+
+
+
+
+ <!-- WhatsApp İkonu Script-->
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+  const icon = document.querySelector('.whatsapp-icon');
+
+  function spinOnce() {
+    // class kaldır -> tarayıcıyı sıfırlat
+    icon.classList.remove('spin');
+    void icon.offsetWidth; // reflow hilesi
+    
+    // tekrar ekle -> animasyon tetiklenir
+    icon.classList.add('spin');
+  }
+
+  // İlk tur hemen
+  spinOnce();
+
+  // setInterval ile döneceği Süre belirlenir
+  setInterval(spinOnce, 3000);
+});
+  </script>
+ <!-- WhatsApp İkonu Script-->
+</body>
+</html>
